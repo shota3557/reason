@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: MyText
+  picture: MyText
+  movie: MyText
+  done: false
+  task: one
+
+two:
+  content: MyText
+  picture: MyText
+  movie: MyText
+  done: false
+  task: two

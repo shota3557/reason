@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Causes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Picture</th>
+      <th>Movie</th>
+      <th>Done</th>
+      <th>Task</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @causes.each do |cause| %>
+      <tr>
+        <td><%= cause.content %></td>
+        <td><%= cause.picture %></td>
+        <td><%= cause.movie %></td>
+        <td><%= cause.done %></td>
+        <td><%= cause.task_id %></td>
+        <td><%= link_to 'Show', cause %></td>
+        <td><%= link_to 'Edit', edit_cause_path(cause) %></td>
+        <td><%= link_to 'Destroy', cause, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cause', new_cause_path %>
