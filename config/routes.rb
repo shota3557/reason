@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   }
   root 'tasks#index'
   resources :tasks, except: [:show]
+  resources :favorites, only: [:create, :destroy]
 end
