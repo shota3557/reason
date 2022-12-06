@@ -4,5 +4,10 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   root 'tasks#index'
-  resources :tasks, except: [:show]
+  resources :tasks, except: [:show] do
+    collection do
+      get :favorites, only: [:create, :destroy]
+    end
+  end  
+  resources :favorites, only: [:create, :destroy, :index]
 end
