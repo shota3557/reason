@@ -16,9 +16,11 @@
       <% if user_signed_in? %>
         <%= link_to 'マイページ', edit_user_registration_path %>
         <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+        <%= link_to 'お気に入り一覧', favorites_path %>
       <% else %>
         <%= link_to 'サインアップ', new_user_registration_path %>
         <%= link_to 'ログイン', new_user_session_path %>
+        <%= link_to 'お気に入り一覧', favorites_path %>
       <% end %>
       </nav>
     </header>
