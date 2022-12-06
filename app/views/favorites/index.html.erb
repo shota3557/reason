@@ -1,0 +1,23 @@
+<table>
+  <thead>
+    <tr>
+      <th>投稿者</th>
+      <th>投稿内容</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @favorites.each do |favorite| %>
+      <tr>
+        <td><%= favorite.user.name %></td>
+        <td><%= favorite.task.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '投稿一覧へ', tasks_path %>
+<%= link_to '新規投稿へ', new_task_path %>
