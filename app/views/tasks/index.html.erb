@@ -5,7 +5,7 @@
     <% @tasks.each do |t| %>
       <tr>
         <td><%= t.name %></td>
-        <td><%= link_to '詳細を見る', causes_path %></td>
+        <td><%= link_to '関連原因を見る', task_causes_path(task_id: t) %></td>
         <td><%= link_to '編集する', edit_task_path(t) %></td>
         <td><%= link_to '削除する', t, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
         <td><% if t.user_id == current_user.id %>
