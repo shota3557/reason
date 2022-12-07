@@ -1,20 +1,30 @@
-<h1><%= current_user.name %>の達成したいこと一覧</h1>
+<h1><%= current_user.name %>の達成したいリスト</h1>
 
+<table>
+  <thead>
+    <tr>
+      <th>リスト名</th>
+      <th>イメージ写真</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 <table>
   <tbody>
     <% @tasks.each do |t| %>
       <tr>
         <td><%= t.name %></td>
+        <td><%= image_tag t.picture.url unless t.picture.url == nil %></td>
         <td><%= link_to '関連原因を見る', task_causes_path(task_id: t) %></td>
         <td><%= link_to '編集する', edit_task_path(t) %></td>
         <td><%= link_to '削除する', t, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
-        <td><% if t.user_id == current_user.id %>
-            　<% if current_user.favorites.find_by(task_id: t.id).present? %>
-            　  <%= link_to 'お気に入り解除する', favorite_path(current_user.favorites.find_by(task_id: t.id).id), method: :delete, class: 'btn btn-danger' %>
-            　<% else %>
-            　  <%= link_to 'お気に入りする', favorites_path(task_id: t.id), method: :post, class: 'btn btn-primary' %>
-            　<% end %>
+        <td>
+          <% if t.user_id == current_user.id %>
+            <% if current_user.favorites.find_by(task_id: t.id).present? %>
+              <%= link_to 'お気に入り解除する', favorite_path(current_user.favorites.find_by(task_id: t.id).id), method: :delete, class: 'btn btn-danger' %>
+            <% else %>
+              <%= link_to 'お気に入りする', favorites_path(task_id: t.id), method: :post, class: 'btn btn-primary' %>
             <% end %>
+          <% end %>
         </td>
       </tr>
     <% end %>

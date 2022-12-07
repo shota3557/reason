@@ -17,8 +17,8 @@
       <tr>
         <td><%= cause.content %></td>
         <td><%= cause.task.id %></td>
-        <td><%= cause.picture %></td>
-        <td><%= cause.movie %></td>
+        <td><%= image_tag cause.picture.url unless cause.picture.url == nil %></td>
+        <td><%= cause.movie unless cause.picture.url == nil %></td>
         <td><%= link_to '詳細を見る', task_cause_path(@task, cause) %></td>
         <td><%= link_to '編集する', edit_task_cause_path(@task, cause) %></td>
         <td><%= link_to '削除する', task_cause_path(@task, cause), method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
