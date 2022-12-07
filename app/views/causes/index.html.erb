@@ -1,29 +1,32 @@
-<h1>その達成したいタスク</h1>
+<h1>その達成したいタスクができない理由</h1>
 
 <table>
   <thead>
     <tr>
       <th>進まない原因</th>
-      <th>写真</th>
+      <th>task.id</th>
+      <th>画像</th>
       <th>動画</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
+  <h2>そのタスクと紐づいた原因だけ表示させたい</h2>
   <tbody>
     <% @causes.each do |cause| %>
       <tr>
         <td><%= cause.content %></td>
+        <td><%= cause.task.id %></td>
         <td><%= cause.picture %></td>
         <td><%= cause.movie %></td>
-        <td><%= link_to '詳細を見る', cause %></td>
-        <td><%= link_to '編集する', edit_cause_path(cause) %></td>
-        <td><%= link_to '削除する', cause, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+        <td><%= link_to '詳細を見る', task_cause_path(@task, cause) %></td>
+        <td><%= link_to '編集する', edit_task_cause_path(@task, cause) %></td>
+        <td><%= link_to '削除する', task_cause_path(@task, cause), method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+<%= link_to '深掘りを追加する', new_task_cause_path(task_id: @task) %> 
 
-<%= link_to '深掘りを追加する', new_cause_path %>
