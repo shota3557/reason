@@ -11,20 +11,25 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
+  <table>
+  <thead>
+    <tr>
+      <th>できない理由</th>
+      <th>画像</th>
+      <th>動画</th>
+    </tr>
+  </thead>
 
-  <div class="field">
-    <%= form.label :picture %>
-    <%= form.text_area :picture %>
-  </div>
+  <tbody>
+      <tr>
+        <td><%= form.text_field :content %></td>
+        <td><%= form.file_field :picture %></td>
+        <td><%= form.file_field :movie, :accept => 'movie/*' %></td>
+        <%= form.hidden_field :task_id, :value => @cause.task_id %>
+      </tr>
+  </tbody>
+</table>
 
-  <div class="field">
-    <%= form.label :movie %>
-    <%= form.text_area :movie %>
-  </div>
 
   <div class="actions">
     <%= form.submit %>

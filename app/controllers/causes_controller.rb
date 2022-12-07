@@ -1,58 +1,49 @@
 class CausesController < ApplicationController
-  before_action :set_cause, only: [:show, :edit, :update, :destroy]
 
-  # GET /causes
   def index
     @causes = Cause.all
   end
 
-  # GET /causes/1
   def show
+    @cause = Cause.find(params[:id])
   end
 
-  # GET /causes/new
   def new
     @cause = Cause.new
+    @cause.task_id = params[:task_id]
   end
 
-  # GET /causes/1/edit
   def edit
+    @cause = Cause.find(params[:id])
   end
 
-  # POST /causes
   def create
     @cause = Cause.new(cause_params)
-
+    @cause.task_id = params[:cause][:task_id]
     if @cause.save
-      redirect_to @cause, notice: 'Cause was successfully created.'
+      redirect_to causes_path, notice: "登録した"
     else
       render :new
     end
   end
 
-  # PATCH/PUT /causes/1
   def update
+    @cause = Cause.find(params[:id])
     if @cause.update(cause_params)
-      redirect_to @cause, notice: 'Cause was successfully updated.'
+      redirect_to @cause, notice: '編集した'
     else
       render :edit
     end
   end
 
-  # DELETE /causes/1
   def destroy
+    @cause = Cause.find(params[:id])
     @cause.destroy
     redirect_to causes_url, notice: 'Cause was successfully destroyed.'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_cause
-      @cause = Cause.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def cause_params
-      params.require(:cause).permit(:content, :picture, :movie, :done, :task_id)
-    end
+  def cause_params
+    params.require(:cause).permit(:task_id, :content, :picture, :movie, :done)
+  end
 end

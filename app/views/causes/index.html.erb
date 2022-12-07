@@ -1,15 +1,11 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Causes</h1>
+<h1>その達成したいタスク</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Content</th>
-      <th>Picture</th>
-      <th>Movie</th>
-      <th>Done</th>
-      <th>Task</th>
+      <th>進まない原因</th>
+      <th>写真</th>
+      <th>動画</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,11 +16,9 @@
         <td><%= cause.content %></td>
         <td><%= cause.picture %></td>
         <td><%= cause.movie %></td>
-        <td><%= cause.done %></td>
-        <td><%= cause.task_id %></td>
-        <td><%= link_to 'Show', cause %></td>
-        <td><%= link_to 'Edit', edit_cause_path(cause) %></td>
-        <td><%= link_to 'Destroy', cause, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '詳細を見る', cause %></td>
+        <td><%= link_to '編集する', edit_cause_path(cause) %></td>
+        <td><%= link_to '削除する', cause, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Cause', new_cause_path %>
+<%= link_to '深掘りを追加する', new_cause_path %>
