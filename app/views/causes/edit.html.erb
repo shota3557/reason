@@ -1,6 +1,6 @@
-<h1>Editing Cause</h1>
+<h1>原因編集画面</h1>
 
 <%= render 'form', cause: @cause %>
 
-<%= link_to 'Show', @cause %> |
-<%= link_to 'Back', causes_path %>
+<%= link_to '詳細画面へ', task_cause_path(@task, @cause) %> |
+<%= link_to '原因一覧へ', task_causes_path(@task, @cause) %>
