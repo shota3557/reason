@@ -1,4 +1,4 @@
-<%= form_with(model: @cause, local: true) do |form| %>
+<%= form_with(model: [@task, @cause], local: true) do |form| %>
   <% if @cause.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@cause.errors.count, "error") %> prohibited this cause from being saved:</h2>
