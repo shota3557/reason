@@ -8,7 +8,7 @@ class TasksController < ApplicationController
   def create
     @task= current_user.tasks.build(task_params) 
     if @task.save
-      redirect_to new_cause_path(task_id: @task.id), notice: '登録完了しました'
+      redirect_to new_task_cause_path(@task), notice: '登録完了しました'
     else
       render :new
     end
