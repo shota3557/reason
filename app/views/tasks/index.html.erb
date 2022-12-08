@@ -13,7 +13,7 @@
   <tbody>
     <% @tasks.each do |t| %>
       <tr>
-        <td><td><%= check_box_tag '', '' %></td></td>
+        <td><%= check_box_tag '', '' %></td>
         <td><%= t.name %></td>
         <td><%= image_tag t.picture.url unless t.picture.url == nil %></td>
         <td><%= link_to '関連原因を見る', task_causes_path(task_id: t) %></td>
