@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>解決済</th>
       <th>進まない原因</th>
       <th>画像</th>
       <th>動画</th>
@@ -14,6 +15,7 @@
   <tbody>
     <% @causes.each do |cause| %>
       <tr>
+        <td><%= check_box_tag '', '' %></td>
         <td><%= cause.content %></td>
         <td><%= image_tag cause.picture.url unless cause.picture.url == nil %></td>
         <td>
