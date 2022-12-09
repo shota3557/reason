@@ -64,3 +64,4 @@ gem 'mini_magick'
 gem 'rails_admin'
 gem 'cancancan'
 gem "cocoon"
+gem 'cancancan'
