@@ -10,6 +10,7 @@
       </ul>
     </div>
   <% end %>
+
 <table>
   <thead>
     <tr>
@@ -46,7 +47,11 @@
   </table>
   <% end %>
 
-<div class="actions">
+  <div class="links">
+    <%= link_to_add_association 'できない理由', form, :causes %>  
+  </div>
+
+  <div class="actions">
     <%= form.submit "登録する" %>
   </div>
 
