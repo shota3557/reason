@@ -10,6 +10,7 @@
       </ul>
     </div>
   <% end %>
+
 <table>
   <thead>
     <tr>
@@ -26,7 +27,31 @@
   </tbody>
 </table>
 
-<div class="actions">
+<%= form.fields_for :causes do |cause| %>
+  <table>
+    <thead>
+      <tr>
+        <th>できない理由</th>
+        <th>画像</th>
+        <th>動画</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+        <tr>
+          <td><%= cause.text_field :content %></td>
+          <td><%= cause.file_field :picture %></td>
+          <td><%= cause.file_field :movie, :accept => 'movie/*' %></td>
+        </tr>
+    </tbody>
+  </table>
+  <% end %>
+
+  <div class="links">
+    <%= link_to_add_association 'できない理由', form, :causes %>  
+  </div>
+
+  <div class="actions">
     <%= form.submit "登録する" %>
   </div>
 

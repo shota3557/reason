@@ -1,4 +1,4 @@
-<h1>その達成したいタスクができない理由</h1>
+<h1><%= @cause.task.name %></h1>
 
 <table>
   <thead>
@@ -11,7 +11,6 @@
     </tr>
   </thead>
 
-  <h2>そのタスクと紐づいた原因だけ表示させたい</h2>
   <tbody>
     <% @causes.each do |cause| %>
       <tr>

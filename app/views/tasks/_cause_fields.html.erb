@@ -1,0 +1,19 @@
+<div class="nested-fields">
+<table>
+  <thead>
+    <tr>
+      <th>なんで？</th>
+      <th>画像</th>
+      <th>動画</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= f.text_area :content %></td>
+        <td><%= f.file_field :picture %></td>
+        <td><%= f.file_field :movie, :accept => 'movie/*' %></td>
+        <td><%= link_to_remove_association "削除する", f %></td>
+      </tr>
+  </tbody>
+</table>
