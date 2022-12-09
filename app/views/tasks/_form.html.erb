@@ -26,6 +26,26 @@
   </tbody>
 </table>
 
+<%= form.fields_for :causes do |cause| %>
+  <table>
+    <thead>
+      <tr>
+        <th>できない理由</th>
+        <th>画像</th>
+        <th>動画</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+        <tr>
+          <td><%= cause.text_field :content %></td>
+          <td><%= cause.file_field :picture %></td>
+          <td><%= cause.file_field :movie, :accept => 'movie/*' %></td>
+        </tr>
+    </tbody>
+  </table>
+  <% end %>
+
 <div class="actions">
     <%= form.submit "登録する" %>
   </div>
