@@ -1,5 +1,4 @@
 class TasksController < ApplicationController
-  before_action :authenticate_user!
 
   def new
     @task = Task.new
@@ -24,7 +23,7 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
-    if @task.update
+    if @task.update(task_params)
       redirect_to tasks_path
     else
       render :edit  
@@ -39,7 +38,7 @@ class TasksController < ApplicationController
 
   private
   def task_params
-    params.require(:task).permit(:name, :picture, :image_cache, causes_attributes: [:id, :content, :picture, :movie, :_destroy])
+    params.require(:task).permit(:name, :picture, :image_cache, causes_attributes: [:id, :content, :picture, :movie, :_destroy, solutions_attributes: [:id, :content, :picture, :movie, :_destroy]])
   end
 end
 

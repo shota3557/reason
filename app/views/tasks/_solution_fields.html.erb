@@ -1,0 +1,18 @@
+<div class = "nested-fields">
+<table>
+  <thead>
+    <tr>
+      <th>解決策</th>
+      <th>画像</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= f.text_field :content %></td>
+        <td><%= f.file_field :picture %></td>
+        <td><%= link_to_remove_association "削除する", f %></td>
+      </tr>
+  </tbody>
+</table>
+</div>
