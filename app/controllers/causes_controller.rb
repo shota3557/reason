@@ -8,12 +8,13 @@ class CausesController < ApplicationController
 
   def show
     @task = Task.find(params[:task_id])
+    @cause = @task.causes.build
     @causes = Cause.where(task_id: params[:task_id])
   end
 
   def new
-    @cause = Cause.new
-    @cause.task_id = params[:task_id]
+    task = Task.find(params[:task_id])
+    @cause = task.causes.build
     @task = Task.find(params[:task_id])
   end
 
