@@ -39,7 +39,7 @@ class TasksController < ApplicationController
 
   private
   def task_params
-    params.require(:task).permit(:name, :picture, :image_cache, causes_attributes: [:id, :content, :picture, :movie, :_destroy])
+    params.require(:task).permit(:name, :picture, :image_cache, causes_attributes: [:id, :content, :picture, :movie, :_destroy, solutions_attributes: [:id, :content, :picture, :movie, :_destroy]])
   end
 end
 
