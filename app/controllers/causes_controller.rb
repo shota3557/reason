@@ -7,8 +7,8 @@ class CausesController < ApplicationController
   end
 
   def show
-    @cause = Cause.find(params[:id])
     @task = Task.find(params[:task_id])
+    @causes = Cause.where(task_id: params[:task_id])
   end
 
   def new
