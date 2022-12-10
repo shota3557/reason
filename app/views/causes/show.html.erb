@@ -7,6 +7,8 @@
       <th>進まない原因</th>
       <th>画像</th>
       <th>動画</th>
+      <th>解決策</th>
+      <th>解決策の画像</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,12 +19,13 @@
         <td><%= check_box_tag '', '' %></td>
         <td><%= cause.content %></td>
         <td><%= image_tag cause.picture.url unless cause.picture.url == nil %></td>
+        <td></td>
         <td>
           <%= link_to cause.movie_url.to_s do %>
             <%= video_tag(cause.movie.to_s, autoplay: true, muted: true, loop: true) unless cause.movie.url == nil %>
           <% end %> 
         </td>
-        <td><%= link_to '詳細を見る', task_cause_path(@task, cause) %></td>
+        <td><%= link_to '解決策を見る', task_cause_path(@task, cause) %></td>
         <td><%= link_to '編集する', edit_task_cause_path(@task, cause) %></td>
         <td><%= link_to '削除する', task_cause_path(@task, cause), method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
       </tr>
@@ -30,5 +33,4 @@
   </tbody>
 </table>
 
-<%= link_to '編集する', edit_task_cause_path(@task, @cause) %> |
 <%= link_to '原因一覧画面へ', task_causes_path(@task) %>
