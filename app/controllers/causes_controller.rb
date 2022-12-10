@@ -1,7 +1,7 @@
 class CausesController < ApplicationController
 
   def index
-    @causes = Cause.where(task_id: params[:task_id])
+    @causes = Cause.where(task_id: params[:task_id]).first
     @task = Task.find(params[:task_id])
     @cause = @task.causes.build
   end
