@@ -10,4 +10,5 @@ class User < ApplicationRecord
       user.name = "ゲスト"
     end
   end
+  mount_uploader :picture, UserPictureUploader
 end
