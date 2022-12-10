@@ -1,3 +1,4 @@
+<h1>「<%= @cause.task.name %>」ができない原因</h1>
 <p id="notice"><%= notice %></p>
 
 <table>
@@ -19,13 +20,13 @@
         <td><%= check_box_tag '', '' %></td>
         <td><%= cause.content %></td>
         <td><%= image_tag cause.picture.url unless cause.picture.url == nil %></td>
-        <td></td>
         <td>
           <%= link_to cause.movie_url.to_s do %>
             <%= video_tag(cause.movie.to_s, autoplay: true, muted: true, loop: true) unless cause.movie.url == nil %>
           <% end %> 
         </td>
-        <td><%= link_to '解決策を見る', task_cause_path(@task, cause) %></td>
+        <td>ここに解決策表示させる</td>
+        <td>ここに解決策のイメージ写真表示させる</td> 
         <td><%= link_to '編集する', edit_task_cause_path(@task, cause) %></td>
         <td><%= link_to '削除する', task_cause_path(@task, cause), method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
       </tr>
