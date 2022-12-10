@@ -1,0 +1,6 @@
+<h1><%= @user.name %>のページ</h1>
+<p>名前 : <%= @user.name %></p>
+<p>メールアドレス : <%= @user.email %></p>
+<p>管理者権限 : <%= @user.admin %></p>
+<%= link_to 'タスク一覧へ', tasks_path %>
+<%= link_to 'ユーザ編集へ', edit_user_registration_path %>
