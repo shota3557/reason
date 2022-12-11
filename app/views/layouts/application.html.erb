@@ -23,6 +23,8 @@
       <% else %>
         <%= link_to 'サインアップ', new_user_registration_path %>
         <%= link_to 'ログイン', new_user_session_path %>
+        <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'btn btn-outline-info rounded-pill' %>
+        <%= link_to "ゲスト管理者ログイン", users_admin_guest_sign_in_path, method: :post, class: 'btn btn-outline-info rounded-pill' %>
       <% end %>
       </nav>
     </header>
