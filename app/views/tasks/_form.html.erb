@@ -39,9 +39,11 @@
   
     <tbody>
         <tr>
-          <td><%= cause.text_field :content %></td>
-          <td><%= cause.file_field :picture %></td>
-          <td><%= cause.file_field :movie, :accept => 'movie/*' %></td>
+        <td><%= form.text_field :content %></td>
+        <td><%= form.file_field :picture %></td>
+        <td><%= form.file_field :movie, :accept => 'movie/*' %></td>
+        <%= form.hidden_field :task_id, :value => @cause.task_id %>
+        <%= form.hidden_field :add_new_cause, :value => @test %>
         </tr>
     </tbody>
   </table>
