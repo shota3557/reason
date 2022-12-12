@@ -2,7 +2,6 @@
   <% if @task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this project from being saved:</h2>
-
       <ul>
         <% @task.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,42 +10,40 @@
     </div>
   <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>達成したいこと</th>
-      <th>イメージ画像</th>
-    </tr>
-  </thead>
-
-  <tbody>
+  <table>
+    <thead>
+      <tr>
+        <th>達成したいこと</th>
+        <th>イメージ画像</th>
+      </tr>
+    </thead>
+    <tbody>
       <tr>
         <td><%= form.text_field :name %></td>
         <td><%= form.file_field :picture %></td>
       </tr>
-  </tbody>
-</table>
-
-<%= form.fields_for :causes do |cause| %>
-  <table>
-    <thead>
-      <tr>
-        <th>できない理由</th>
-        <th>画像</th>
-        <th>動画</th>
-      </tr>
-    </thead>
-  
-    <tbody>
-        <tr>
-        <td><%= form.text_field :content %></td>
-        <td><%= form.file_field :picture %></td>
-        <td><%= form.file_field :movie, :accept => 'movie/*' %></td>
-        <%= form.hidden_field :task_id, :value => @cause.task_id %>
-        <%= form.hidden_field :add_new_cause, :value => @test %>
-        </tr>
     </tbody>
   </table>
+
+  <%= form.fields_for :causes do |cause| %>
+    <table>
+      <thead>
+        <tr>
+          <th>できない理由</th>
+          <th>画像</th>
+          <th>動画</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= cause.text_field :content %></td>
+          <td><%= cause.file_field :picture %></td>
+          <td><%= cause.file_field :movie, :accept => 'movie/*' %></td>
+          <%= cause.hidden_field :task_id, :value => @cause.task_id %>
+          <%= cause.hidden_field :add_new_cause, :value => @task %>
+        </tr>
+      </tbody>
+    </table>
   <% end %>
 
   <div class="links">
@@ -56,5 +53,4 @@
   <div class="actions">
     <%= form.submit "登録する" %>
   </div>
-
 <% end %>
