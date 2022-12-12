@@ -2,6 +2,8 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
+    @cause = @task.causes.build
+    @cause.solutions.build
   end
 
   def create
