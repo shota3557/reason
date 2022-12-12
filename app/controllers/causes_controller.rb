@@ -15,7 +15,6 @@ class CausesController < ApplicationController
   def new
     task = Task.find(params[:task_id])
     @cause = task.causes.build
-    @task = Task.find(params[:task_id])
   end
 
   def edit
