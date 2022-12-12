@@ -4,7 +4,6 @@
   <% if @task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this project from being saved:</h2>
-
       <ul>
         <% @task.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -13,26 +12,23 @@
     </div>
   <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>達成したいこと</th>
-      <th>イメージ画像</th>
-    </tr>
-  </thead>
-
-  <tbody>
+  <table>
+    <thead>
+      <tr>
+        <th>達成したいこと</th>
+        <th>イメージ画像</th>
+      </tr>
+    </thead>
+    <tbody>
       <tr>
         <td><%= form.text_field :name %></td>
         <td><%= form.file_field :picture %></td>
       </tr>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
 <div class="actions">
   <%= form.submit "登録する" %>
 </div>
-
 <% end %>
-
 <%= link_to "タスク一覧に戻る", tasks_path %>
