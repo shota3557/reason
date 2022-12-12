@@ -1,5 +1,4 @@
 <h1><%= @cause.task.name %></h1>
-
 <table>
   <thead>
     <tr>
@@ -11,23 +10,21 @@
     </tr>
   </thead>
 
+  <% if @first_cause %>
   <tbody>
     <tr>
       <td><%= check_box_tag '', '' %></td>
       <td><%= @first_cause.content %></td>
-      <td><%= image_tag @first_cause.picture.url unless @first_cause.picture.url == nil %></td>
+      <td><%= image_tag @first_cause&.picture.url unless @first_cause&.picture.url == nil %></td>
       <td>
         <%= link_to @first_cause.movie_url.to_s do %>
-          <%= video_tag(@first_cause.movie.to_s, autoplay: true, muted: true, loop: true) unless @first_cause.movie.url == nil %>
+          <%= video_tag(@first_cause.movie.to_s, autoplay: true, muted: true, loop: true) unless @first_cause&.movie&.url == nil %>
         <% end %> 
       </td>
       <td><%= link_to '詳細を見る', task_cause_path(@task, @first_cause) %></td>
-      <td><%= link_to '編集する', edit_task_cause_path(@task, @first_cause) %></td>
-      <td><%= link_to '削除する', task_cause_path(@task, @first_cause), method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
     </tr>
   </tbody>
+  <% end %>
 </table>
-
 <br>
-<%= link_to '深掘りを追加する', new_task_cause_path(task_id: @task) %> 
 <%= link_to "タスク一覧に戻る", tasks_path %>
