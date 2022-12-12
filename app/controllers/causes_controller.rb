@@ -45,11 +45,11 @@ class CausesController < ApplicationController
   def destroy
     @cause = Cause.find(params[:id])
     @cause.destroy
-    redirect_to task_causes_path, notice: 'Cause was successfully destroyed.'
+    redirect_to task_causes_path, notice: '削除した'
   end
 
   private
   def cause_params
-    params.require(:cause).permit(:task_id, :content, :picture, :movie, :done)
+    params.require(:cause).permit(:task_id, :content, :picture, :movie, :done, solutions_attributes: [:id, :content, :picture, :movie, :_destroy])
   end
 end
