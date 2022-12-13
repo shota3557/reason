@@ -1,7 +1,7 @@
 <%= form_with(model: @task, local: true) do |form| %>
   <% if @task.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this project from being saved:</h2>
+      <h2><%= pluralize(@task.errors.count, "") %>件のエラーがあります</h2>
       <ul>
         <% @task.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -19,7 +19,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><%= form.text_field :name %></td>
+        <td><%= form.text_field :name, placeholder: "達成したいことを入力してください" %></td>
         <td><%= form.file_field :picture %></td>
       </tr>
     </tbody>
@@ -36,11 +36,9 @@
       </thead>
       <tbody>
         <tr>
-          <td><%= cause.text_field :content %></td>
+          <td><%= cause.text_field :content, placeholder: "未達成の理由を入力してください" %></td>
           <td><%= cause.file_field :picture %></td>
           <td><%= cause.file_field :movie, :accept => 'movie/*' %></td>
-          <%= cause.hidden_field :task_id, :value => @cause.task_id %>
-          <%= cause.hidden_field :add_new_cause, :value => @task %>
         </tr>
       </tbody>
     </table>
