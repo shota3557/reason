@@ -1,7 +1,8 @@
 <%= form_with(model: [@task, @cause], url: choose_new_or_edit, local: true) do |form| %>
   <% if @cause.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@cause.errors.count, "error") %> prohibited this cause from being saved:</h2>
+      <h2><%= pluralize(@cause.errors.count, "") %>件のエラーがあります</h2>
+
       <ul>
         <% @cause.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -21,18 +22,30 @@
   
     <tbody>
       <tr>
-      <td><%= form.text_field :content %></td>
+      <td><%= form.text_field :content, placeholder: "できない理由を入力してください" %></td>
       <td><%= form.file_field :picture %></td>
       <td><%= form.file_field :movie, :accept => 'movie/*' %></td>
       <%= form.hidden_field :task_id, :value => @cause.task_id %>
-      <%= form.hidden_field :add_new_cause, :value => @task %>
       </tr>
     </tbody>
   </table>
-
-  <div class="links">
-      <%= link_to_add_association '解決策を思いついた', form, :solutions %>  
-  </div>
+  
+  <%= form.fields_for :solutions do |s| %>
+    <table>
+      <thead>
+        <tr>
+          <th>解決策</th>
+          <th>画像</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= s.text_field :content, placeholder: "解決策を入力してください" %></td>
+          <td><%= s.file_field :picture %></td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
 
   <div class="actions">
     <%= form.submit "登録する" %>
