@@ -3,20 +3,19 @@ class TasksController < ApplicationController
   def new
     @task = Task.new
     @cause = @task.causes.build
-    @cause.solutions.build
+  end
+
+  def index
+    @tasks = Task.all
   end
 
   def create
-    @task= current_user.tasks.build(task_params) 
+    @task= current_user.tasks.build(task_params)     
     if @task.save
       redirect_to task_causes_path(@task), notice: '登録完了しました'
     else
       render :new
     end
-  end
-
-  def index
-    @tasks = Task.all
   end
 
   def edit
@@ -40,7 +39,7 @@ class TasksController < ApplicationController
 
   private
   def task_params
-    params.require(:task).permit(:name, :picture, :image_cache, causes_attributes: [:id, :content, :picture, :movie, :_destroy, solutions_attributes: [:id, :content, :picture, :movie, :_destroy]])
+    params.require(:task).permit(:name, :picture, :image_cache, causes_attributes: [:id, :content, :picture, :movie, :task_id, :_destroy, solutions_attributes: [:id, :content, :picture, :movie, :_destroy]])
   end
 end
 
