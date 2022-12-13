@@ -1,5 +1,22 @@
 ja:
   activerecord:
+    models:
+      user: ユーザ
+      task: 親
+      cause: 子
+      solution: 孫 
+    attributes:
+      user:
+        name: 名前
+      task: 
+        name: 達成したいこと
+        causes: できない理由
+      cause:
+        content: 原因
+      solution:
+        content: 解決策
+      task/causes: 
+        content: できない理由
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
