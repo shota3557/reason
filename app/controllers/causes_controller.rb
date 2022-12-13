@@ -15,6 +15,7 @@ class CausesController < ApplicationController
   def new
     task = Task.find(params[:task_id])
     @cause = task.causes.build
+    @cause.solutions.build
   end
 
   def edit
@@ -26,7 +27,7 @@ class CausesController < ApplicationController
     @cause = Cause.new(cause_params)
     @cause.task_id = params[:cause][:task_id]
     if @cause.save
-      redirect_to task_causes_path, notice: "登録した"
+      redirect_to task_cause_path(@cause.task, @cause), notice: "登録した"
     else
       render :new
     end
@@ -35,16 +36,16 @@ class CausesController < ApplicationController
   def update
     @cause = Cause.find(params[:id])
     if @cause.update(cause_params)
-      redirect_to task_causes_path, notice: '編集した'
+      redirect_to task_cause_path(@cause.task, @cause), notice: '編集した'
     else
-      render :edit
+      redirect_to edit_task_cause_path(@cause.task, @cause), notice: '未入力はできません'
     end
   end
 
   def destroy
     @cause = Cause.find(params[:id])
     @cause.destroy
-    redirect_to task_causes_path, notice: '削除した'
+    redirect_to task_cause_path(@cause.task, @cause), notice: '削除した'
   end
 
   private
