@@ -23,11 +23,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :パスワード %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.label :パスワード %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <em><%= @minimum_password_length %> 文字以上に設定してください</em>
     <% end %>
   </div>
 
@@ -37,7 +37,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :今のパスワード %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.label :今のパスワード %><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
