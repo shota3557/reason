@@ -10,7 +10,7 @@
 
   <tbody>
     <tr>
-      <td><%= f.text_area :content %></td>
+      <td><%= f.text_area :content, placeholder: "未達成の理由を入力してください" %></td>
       <td><%= f.file_field :picture %></td>
       <td><%= f.file_field :movie, :accept => 'movie/*' %></td>
       <td><%= link_to_remove_association "削除する", f %></td>
