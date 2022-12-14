@@ -66,3 +66,4 @@ gem 'cancancan'
 gem "cocoon"
 gem 'cancancan'
 gem 'rails-i18n'
+gem 'fog-aws'
