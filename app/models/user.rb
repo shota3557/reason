@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :tasks, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_tasks, through: :tasks, source: :task
-  validates :name, :email, :password, :password_confirmation, presence: true
+  validates :name, presence: true
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
