@@ -14,6 +14,7 @@
       <tr>
         <td><%= user.name %></td>
         <td><%= user.admin %></td>
+        <td><%= link_to '削除する', user_path(user.id), method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
       </tr>
     <% end %>
   </tbody>
