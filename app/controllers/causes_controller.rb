@@ -50,6 +50,6 @@ class CausesController < ApplicationController
 
   private
   def cause_params
-    params.require(:cause).permit(:task_id, :content, :picture, :movie, :done, solutions_attributes: [:id, :content, :picture, :movie, :_destroy])
+    params.require(:cause).permit(:task_id, :content, :picture, :movie, :done, solutions_attributes: [:id, :content, :picture, :movie, :done, :_destroy])
   end
 end
