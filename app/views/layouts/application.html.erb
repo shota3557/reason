@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Reason</title>
+    <title>あなたができない理由</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,17 +12,19 @@
 
   <body>
     <header>
-      <nav>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand text-dark">あなたができない理由</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <% if user_signed_in? %>
-        <%= link_to 'マイページ', user_path(current_user.id) %>
-        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-        <%= link_to 'お気に入り一覧', favorites_path %>
+        <%= link_to 'マイページ', user_path(current_user.id), class: 'btn btn-outline-info rounded-pill' %>
+        <%= link_to 'お気に入り一覧', favorites_path, class: 'btn btn-outline-info rounded-pill' %>
         <% if current_user.try(:admin?) %>
-          <%= link_to '管理者画面へ', users_path %>
+          <%= link_to '管理者画面へ', users_path, class: 'btn btn-outline-info rounded-pill' %>
         <% end %> 
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger rounded-pill' %>
       <% else %>
-        <%= link_to 'サインアップ', new_user_registration_path %>
-        <%= link_to 'ログイン', new_user_session_path %>
+        <%= link_to 'サインアップ', new_user_registration_path, class: 'btn btn-outline-info rounded-pill' %>
+        <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-outline-info rounded-pill' %>
         <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'btn btn-outline-info rounded-pill' %>
         <%= link_to "ゲスト管理者ログイン", users_admin_guest_sign_in_path, method: :post, class: 'btn btn-outline-info rounded-pill' %>
       <% end %>
@@ -30,6 +32,8 @@
     </header>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <div class="base-container">
     <%= yield %>
+    </div>
   </body>
 </html>
