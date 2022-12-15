@@ -15,12 +15,14 @@
   <table>
     <thead>
       <tr>
+        <th>達成した</th>
         <th>達成したいこと</th>
         <th>イメージ画像</th>
       </tr>
     </thead>
     <tbody>
       <tr>
+        <td><%= form.check_box :done, {}, "true", "false" %></td>
         <td><%= form.text_field :name, placeholder: "達成したいことを入力してください" %></td>
         <td><%= form.file_field :picture %></td>
       </tr>
