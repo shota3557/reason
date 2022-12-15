@@ -16,7 +16,7 @@
   <tbody>
     <% @causes.each do |cause| %>
       <tr>
-        <td><%= check_box_tag '', '' %></td>
+        <td><%= cause.done ? '達成済み':'未達成' %></td>
         <td><%= cause.content %></td>
         <td><%= image_tag cause.picture.url unless cause.picture.url == nil %></td>
         <td>
