@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :admin_user
   def show
     @user = User.find(params[:id])
   end
@@ -12,4 +13,11 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to users_path, notice: "ユーザを削除しました"
   end
+
+  private
+  def admin_user
+    unless current_user.admin?
+      redirect_to tasks_path, notice: "管理者以外アクセスできません" 
+    end
+  end  
 end
