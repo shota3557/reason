@@ -13,7 +13,7 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.name %></td>
-        <td><%= user.admin %></td>
+        <td><%= user.admin ? '管理者':'一般ユーザ' %></td>
         <% if current_user.id != user.id %>
           <td><%= link_to '削除する', user_path(user.id), method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
         <% end %>  
