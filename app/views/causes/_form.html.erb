@@ -14,6 +14,7 @@
   <table>
     <thead>
       <tr>
+        <th>解決したか？</th>
         <th>できない理由</th>
         <th>画像</th>
         <th>動画</th>
@@ -22,6 +23,7 @@
   
     <tbody>
       <tr>
+      <td><%= form.check_box :done, {}, "true", "false" %></td>
       <td><%= form.text_field :content, placeholder: "できない理由を入力してください" %></td>
       <td><%= form.file_field :picture %></td>
       <td><%= form.file_field :movie, :accept => 'movie/*' %></td>

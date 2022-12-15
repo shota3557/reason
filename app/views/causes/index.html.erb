@@ -13,7 +13,7 @@
   <% if @first_cause %>
   <tbody>
     <tr>
-      <td><%= check_box_tag '', '' %></td>
+      <td><%= @first_causes&.done ? '達成済み':'未達成' %></td>
       <td><%= @first_cause.content %></td>
       <td><%= image_tag @first_cause&.picture.url unless @first_cause&.picture.url == nil %></td>
       <td>

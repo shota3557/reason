@@ -40,6 +40,13 @@
     <%= f.label :今のパスワード %><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
+  
+  <% if current_user.try(:admin?) %>
+  <div class="field">
+  <%= f.label :管理者権限 %>
+  <%= f.check_box :done, {}, "true", "false" %>
+  </div>
+  <% end %>
 
   <div class="actions">
     <%= f.submit "更新する" %>
