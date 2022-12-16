@@ -1,6 +1,9 @@
+<div class="texts-wrapper">
+<div class="contents-title text-center">
+
 <h1>「<%= @cause.task.name %>」ができない原因</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>解決済</th>
@@ -18,25 +21,25 @@
       <tr>
         <td><%= cause.done ? '達成済み':'未達成' %></td>
         <td><%= cause.content %></td>
-        <td><%= image_tag cause.picture.url unless cause.picture.url == nil %></td>
+        <td><%= image_tag cause.picture.url, width: '90%', height: '90%' unless cause.picture.url == nil %></td>
         <td>
           <%= link_to cause.movie_url.to_s do %>
-            <%= video_tag(cause.movie.to_s, autoplay: true, muted: true, loop: true) unless cause.movie.url == nil %>
+            <%= video_tag(cause.movie.to_s, width: '70%', height: '70%', autoplay: true, muted: true, loop: true) unless cause.movie.url == nil %>
           <% end %> 
         </td>
         <% if cause.solutions.each do |s| %>
           <td><%= s.content %></td>
-          <td><%= image_tag s.picture.url unless s.picture.url == nil %></td> 
+          <td><%= image_tag s.picture.url, width: '90%', height: '90%' unless s.picture.url == nil %></td> 
         <% end.empty? %>
           <td><%= nil %></td>
           <td><%= "" %></td> 
         <% end %>
-        <td><%= link_to '編集する', edit_task_cause_path(@task, cause) %></td>
-        <td><%= link_to '削除する', task_cause_path(@task, cause), method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+        <td><%= link_to '編集する', edit_task_cause_path(@task, cause), class: "btn btn-sm btn-outline-success" %></td>
+        <td><%= link_to '削除する', task_cause_path(@task, cause), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-outline-danger" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to '原因一覧画面へ', task_causes_path(@task) %>
-<%= link_to '深掘りを追加する', new_task_cause_path(task_id: @task) %> 
+<%= link_to '原因一覧画面へ', task_causes_path(@task), class: "btn btn-sm btn-outline-dark"%>
+<%= link_to '深掘りを追加する', new_task_cause_path(task_id: @task), class: "btn btn-sm btn-primary" %> 
