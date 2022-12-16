@@ -12,7 +12,7 @@
     </div>
   <% end %>
 
-  <table>
+  <table class="table table-hover">
     <thead>
       <tr>
         <th>達成した</th>
@@ -23,14 +23,11 @@
     <tbody>
       <tr>
         <td><%= form.check_box :done, {}, "true", "false" %></td>
-        <td><%= form.text_field :name, placeholder: "達成したいことを入力してください" %></td>
-        <td><%= form.file_field :picture %></td>
+        <td><%= form.text_field :name, placeholder: "達成したいことを入力してください", class: "form-control-sm" %></td>
+        <td><%= form.file_field :picture, class: "form-control-file-sm" %></td>
+        <td><%= form.submit "変更する", class: "btn btn-primary" %></td>
       </tr>
     </tbody>
   </table>
-
-<div class="actions">
-  <%= form.submit "登録する" %>
-</div>
 <% end %>
 <%= link_to "タスク一覧に戻る", tasks_path %>
