@@ -1,5 +1,5 @@
 <div class = "nested-fields">
-  <table>
+  <table class="table table-hover">
     <thead>
       <tr>
         <th>解決策</th>
@@ -9,9 +9,9 @@
   
     <tbody>
       <tr>
-        <td><%= f.text_field :content, placeholder: "解決策を入力してください" %></td>
-        <td><%= f.file_field :picture %></td>
-        <td><%= link_to_remove_association "削除する", f %></td>
+        <td><%= f.text_field :content, placeholder: "解決策を入力してください", class: "form-control-sm"%></td>
+        <td><%= f.file_field :picture, class: "form-control-file-sm" %></td>
+        <td><%= link_to_remove_association "削除する", f, class: "btn btn-sm btn-outline-danger" %></td>
       </tr>
     </tbody>
   </table>
