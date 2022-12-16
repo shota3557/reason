@@ -1,6 +1,9 @@
+<div class="texts-wrapper">
+<div class="contents-title text-center">
+
 <h1><%= @cause.task.name %></h1>
 <%= image_tag @cause.task.picture.url, width: '50%', height: '50%' unless @cause.task.picture.url == nil %>
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>解決済</th>
@@ -16,16 +19,16 @@
     <tr>
       <td><%= @first_causes&.done ? '達成済み':'未達成' %></td>
       <td><%= @first_cause.content %></td>
-      <td><%= image_tag @first_cause&.picture.url unless @first_cause&.picture.url == nil %></td>
+      <td><%= image_tag @first_cause&.picture.url, width: '80%', height: '80%' unless @first_cause&.picture.url == nil %></td>
       <td>
         <%= link_to @first_cause.movie_url.to_s do %>
-          <%= video_tag(@first_cause.movie.to_s, autoplay: true, muted: true, loop: true) unless @first_cause&.movie&.url == nil %>
+          <%= video_tag(@first_cause.movie.to_s, width: '80%', height: '80%', autoplay: true, muted: true, loop: true) unless @first_cause&.movie&.url == nil %>
         <% end %> 
       </td>
-      <td><%= link_to '詳細を見る', task_cause_path(@task, @first_cause) %></td>
+      <td><%= link_to '詳細を見る', task_cause_path(@task, @first_cause), class: 'btn btn-success' %></td>
     </tr>
   </tbody>
   <% end %>
 </table>
 <br>
-<%= link_to "タスク一覧に戻る", tasks_path %>
+<%= link_to "タスク一覧に戻る", tasks_path, class: 'btn btn-primary' %>
