@@ -2,5 +2,4 @@
 
 <%= render 'form' %>
 
-<%= link_to '詳細画面へ', task_cause_path(@task, @cause) %> |
-<%= link_to '原因一覧へ', task_causes_path(@task, @cause) %>
+<%= link_to '詳細画面へ戻る', task_cause_path(@task, @cause), class: "btn btn-outline-danger" %>
