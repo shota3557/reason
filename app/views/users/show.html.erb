@@ -1,7 +1,9 @@
+<div class="texts-wrapper">
+<div class="contents-title text-center">
+
 <h1><%= @user.name %>のページ</h1>
-<p>プロフィール写真 : <%= image_tag @user.picture.url unless @user.picture.url == nil %></p>
-<p>名前 : <%= @user.name %></p>
+<%= image_tag @user.picture.url unless @user.picture.url == nil %></p>
+<p>アカウント名 : <%= @user.name %></p>
 <p>メールアドレス : <%= @user.email %></p>
-<p>管理者権限 : <%= @user.admin %></p>
-<%= link_to 'タスク一覧へ', tasks_path %>
-<%= link_to 'ユーザ編集へ', edit_user_registration_path %>
+<%= link_to 'タスク一覧へ', tasks_path, class: "btn btn-outline-primary" %>
+<%= link_to 'ユーザ編集へ', edit_user_registration_path, class: "btn btn-outline-success" %>
