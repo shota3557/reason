@@ -1,3 +1,5 @@
+<div class="texts-wrapper">
+<div class="contents-title text-center">
 <h2>プロフィールを編集する</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -44,7 +46,7 @@
   <% if current_user.try(:admin?) %>
   <div class="field">
   <%= f.label :管理者権限 %>
-  <%= f.check_box :done, {}, "true", "false" %>
+  <%= f.check_box :admin, {}, "true", "false" %>
   </div>
   <% end %>
 
