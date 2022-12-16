@@ -1,3 +1,6 @@
+<div class="texts-wrapper">
+<div class="contents-title text-center">
+
 <%= form_with(model: @task, local: true) do |form| %>
   <% if @task.errors.any? %>
     <div id="error_explanation">
@@ -10,7 +13,7 @@
     </div>
   <% end %>
 
-  <table>
+  <table class="table table-hover">
     <thead>
       <tr>
         <th>達成したいこと</th>
@@ -19,14 +22,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><%= form.text_field :name, placeholder: "達成したいことを入力してください" %></td>
-        <td><%= form.file_field :picture %></td>
+        <td><%= form.text_field :name, placeholder: "達成したいことを入力してください", class: "form-control-sm" %></td>
+        <td><%= form.file_field :picture, class: "form-control-file-sm" %></td>
       </tr>
     </tbody>
   </table>
 
   <%= form.fields_for :causes do |cause| %>
-    <table>
+    <table class="table table-hover">
       <thead>
         <tr>
           <th>できない理由</th>
@@ -36,19 +39,19 @@
       </thead>
       <tbody>
         <tr>
-          <td><%= cause.text_field :content, placeholder: "未達成の理由を入力してください" %></td>
-          <td><%= cause.file_field :picture %></td>
-          <td><%= cause.file_field :movie, :accept => 'movie/*' %></td>
+          <td><%= cause.text_field :content, placeholder: "未達成の理由を入力してください", class: "form-control-sm"%></td>
+          <td><%= cause.file_field :picture, class: "form-control-file-sm" %></td>
+          <td><%= cause.file_field :movie, :accept => 'movie/*', class: "form-control-file-sm" %></td>
         </tr>
       </tbody>
     </table>
   <% end %>
 
   <div class="links">
-    <%= link_to_add_association 'できない理由を追加する', form, :causes %>  
+    <%= link_to_add_association 'できない理由を追加する', form, :causes, class: "btn btn-sm btn-outline-primary" %>  
   </div>
 
   <div class="actions">
-    <%= form.submit "登録する" %>
+    <%= form.submit "登録する", class: "btn btn-danger" %>
   </div>
 <% end %>
