@@ -1,15 +1,18 @@
-<h2>パスワードを忘れてしまった</h2>
+<div class="texts-wrapper">
+<div class="contents-title text-center">
+
+<h1>パスワードを忘れてしまった</h1>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" , placeholder: "メールアドレスを入力してください"%>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" , placeholder: "メールアドレスを入力してください", class: "form-control-sm" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "パスワードをリセットする" %>
+    <%= f.submit "パスワードをリセットする", class: "btn btn-danger" %>
   </div>
 <% end %>
 
