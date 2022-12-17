@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'top#index'
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
     post 'users/admin_guest_sign_in', to: 'users/sessions#admin_guest_sign_in'
@@ -8,7 +9,6 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     passwords: 'users/passwords'
   }
-  root 'tasks#index'
   resources :tasks, except: [:show] do
     resources :causes
     collection do
