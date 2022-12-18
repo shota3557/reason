@@ -1,4 +1,5 @@
 class CausesController < ApplicationController
+  before_action :cause_correct_user, only: [:edit, :update, :destroy, :show, :create]
 
   def index
     @first_cause = Cause.where(task_id: params[:task_id]).first
@@ -51,5 +52,13 @@ class CausesController < ApplicationController
   private
   def cause_params
     params.require(:cause).permit(:task_id, :content, :picture, :movie, :done, solutions_attributes: [:id, :content, :picture, :movie, :done, :_destroy])
+  end
+
+  def cause_correct_user
+    task = Task.find(params[:task_id])
+    task.causes.build
+    unless task.user == current_user
+      redirect_to task_causes_path, notice: "あなたのタスクではありません" unless @user == current_user 
+    end
   end
 end
