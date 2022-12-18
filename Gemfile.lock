@@ -134,6 +134,7 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.10.2)
       devise (>= 4.8.0)
+    diff-lcs (1.5.0)
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
@@ -142,6 +143,11 @@ GEM
     erubi (1.11.0)
     excon (0.94.0)
     execjs (2.8.1)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     ffi (1.15.5)
     fog-aws (3.15.0)
       fog-core (~> 2.1)
@@ -273,6 +279,23 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.5)
+    rspec-core (3.11.0)
+      rspec-support (~> 3.11.0)
+    rspec-expectations (3.11.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.11.0)
+    rspec-mocks (3.11.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.11.0)
+    rspec-rails (6.0.1)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      railties (>= 6.1)
+      rspec-core (~> 3.11)
+      rspec-expectations (~> 3.11)
+      rspec-mocks (~> 3.11)
+      rspec-support (~> 3.11)
+    rspec-support (3.11.1)
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     rubyzip (2.3.2)
@@ -366,6 +389,7 @@ DEPENDENCIES
   devise-i18n
   dotenv-rails
   ed25519
+  factory_bot_rails
   fog-aws
   jquery-rails
   listen (~> 3.3)
@@ -376,6 +400,8 @@ DEPENDENCIES
   rails (~> 6.1.6)
   rails-i18n
   rails_admin
+  rexml
+  rspec-rails
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
   spring
