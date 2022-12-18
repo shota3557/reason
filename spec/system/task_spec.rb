@@ -47,7 +47,7 @@ RSpec.describe 'タスク管理機能', type: :system do
       end
 
       context '一覧画面に遷移した場合' do
-        it '未達成の理由をクリックすると、' do
+        it '未達成の理由をクリックすると、Causeの詳細画面に飛ぶ' do
           visit tasks_path
           click_on '未達成の理由'
           expect(page).to have_content 'test1'
