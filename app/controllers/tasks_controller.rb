@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-
+  before_action :task_correct_user, only: [:edit, :update]
   def new
     @task = Task.new
     @cause = @task.causes.build
@@ -40,6 +40,12 @@ class TasksController < ApplicationController
   private
   def task_params
     params.require(:task).permit(:name, :picture, :image_cache, :done, causes_attributes: [:id, :content, :picture, :movie, :task_id, :_destroy, solutions_attributes: [:id, :content, :picture, :movie, :_destroy]])
+  end
+
+  def task_correct_user
+    @task = Task.find(params[:id])
+    @user = @task.user
+    redirect_to tasks_path, notice: "あなたのタスクではありません" unless @user == current_user 
   end
 end
 
