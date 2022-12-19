@@ -27,13 +27,13 @@ RSpec.describe 'ユーザ管理機能', type: :system do
       
     context '登録済みのユーザでログインした場合' do
       it '自分の詳細画面にアクセスできる' do
-        user = FactoryBot.create(:user, email: 'test@example.com')
+        user = FactoryBot.create(:user, name: 'Taro', email: 'test@example.com')
         visit new_user_session_path
         fill_in "user[email]", with: 'test@example.com'
         fill_in "user[password]", with: 'testtest'
         click_button 'ログインする'
         visit user_path(user.id)
-        expect(page).to have_content 'user1のページ'
+        expect(page).to have_content 'Taroのページ'
       end
     end  
       
