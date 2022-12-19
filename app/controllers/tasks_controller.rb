@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :authenticate_user!
   before_action :task_correct_user, only: [:edit, :update]
   def new
     @task = Task.new

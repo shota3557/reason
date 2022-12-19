@@ -1,4 +1,5 @@
 class CausesController < ApplicationController
+  before_action :authenticate_user!
   before_action :cause_correct_user, only: [:edit, :update, :destroy, :show, :create]
 
   def index
