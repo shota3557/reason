@@ -28,7 +28,7 @@ RSpec.describe 'タスク管理機能', type: :system do
       end
 
       context '一覧画面に遷移した場合' do
-        it '編集したタスクがタスク一覧が表示される' do
+        it '編集したタスクが一覧画面に表示される' do
           visit tasks_path
           click_on '編集する'
           fill_in "task[name]", with: 'test2'

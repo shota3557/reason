@@ -7,7 +7,7 @@ RSpec.describe 'Causeモデル機能', type: :model do
       end
 
       context '原因の内容を空で投稿した場合' do
-        it 'バリデーションにひっかる' do
+        it 'バリデーションにひっかかる' do
           @cause = Cause.new(content: '')
           expect(@cause).not_to be_valid #user_idがnilになってしまうので、botでasossiationしてるものを使ってる
         end
