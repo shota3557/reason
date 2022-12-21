@@ -1,9 +1,10 @@
 <div class="texts-wrapper">
-<div class="contents-title text-center">
-
-<h1><%= @user.name %>のページ</h1>
-<%= image_tag @user.picture.url unless @user.picture.url == nil %></p>
-<p>アカウント名 : <%= @user.name %></p>
-<p>メールアドレス : <%= @user.email %></p>
-<%= link_to 'タスク一覧へ', tasks_path, class: "btn btn-outline-primary" %>
-<%= link_to 'ユーザ編集へ', edit_user_registration_path, class: "btn btn-outline-success" %>
+  <div class="contents-title text-center">
+    <h1><%= @user.name %>のページ</h1>
+    <%= image_tag @user.picture.url unless @user.picture.url == nil %></p>
+    <p>アカウント名 : <%= @user.name %></p>
+    <p>メールアドレス : <%= @user.email %></p>
+    <%= link_to 'タスク一覧へ', tasks_path, class: "btn btn-outline-primary" %>
+    <%= link_to 'ユーザ編集へ', edit_user_registration_path, class: "btn btn-outline-success" %>
+  </div>
+</div>
