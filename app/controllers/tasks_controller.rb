@@ -11,10 +11,11 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task= current_user.tasks.build(task_params)     
+    @task= current_user.tasks.build(task_params)
     if @task.save
       redirect_to task_causes_path(@task), notice: '登録完了しました'
     else
+      @cause = @task.causes.build
       render :new
     end
   end
