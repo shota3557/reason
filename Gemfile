@@ -15,7 +15,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'capistrano', '3.16.0' # capistranoのツール一式
+  gem 'capistrano', '3.16.0' 
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
@@ -47,7 +47,6 @@ gem 'mini_magick'
 gem 'rails_admin'
 gem 'cancancan'
 gem "cocoon"
-gem 'cancancan'
 gem 'rails-i18n'
 gem 'fog-aws'
 gem 'dotenv-rails'

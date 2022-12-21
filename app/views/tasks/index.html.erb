@@ -1,42 +1,50 @@
 <div class="texts-wrapper">
-<div class="contents-title text-center">
-<header>
-<h1><%= current_user.name %>の達成したいリスト</h1>
-</header>
-
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>状況</th>
-      <th>リスト名</th>
-      <th>達成イメージ</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @tasks.each do |t| %>
-      <tr>
-        <% if current_user.id == t.user_id %>
-          <td><%= t.done ? '達成済み':'未達成' %></td>
-          <td><%= t.name %></td>
-          <td><%= image_tag t.picture.url, width: '80%', height: '80%' unless t.picture.url == nil %></td>
-          <td><%= link_to '未達成の理由', task_causes_path(task_id: t), class: "btn btn-sm btn-outline-primary" %></td>
-          <td><%= link_to '編集する', edit_task_path(t), class: "btn btn-sm btn-outline-dark" %></td>
-          <td><%= link_to '削除する', t, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-outline-danger" %></td>
-          <td>
-          <% if t.user_id == current_user.id %>
-            <% if current_user.favorites.find_by(task_id: t.id).present? %>
-              <%= link_to 'お気に入り解除する', favorite_path(current_user.favorites.find_by(task_id: t.id).id), method: :delete, class: "btn btn-sm btn-outline-danger" %>
-            <% else %>
-              <%= link_to 'お気に入りする', favorites_path(task_id: t.id), method: :post, class: "btn btn-sm btn-outline-success" %>
-            <% end %>
-          <% end %>
-          </td>
-        <% end %>  
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-<%= link_to '新しいタスクを登録する', new_task_path, class: 'btn btn-primary' %>
+  <div class="contents-title text-center">
+    <header>
+      <h1><%= current_user.name %>の達成したいリスト</h1>
+    </header>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>状況</th>
+          <th>リスト名</th>
+          <th>達成イメージ</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tasks.each do |t| %>
+          <tr>
+            <% if current_user.id == t.user_id %>
+              <td><%= t.done ? '達成済み':'未達成' %></td>
+              <td><%= t.name %></td>
+              <td>
+                <%= image_tag t.picture.url, width: '80%', height: '80%' unless t.picture.url == nil %>
+              </td>
+              <td>
+                <%= link_to '未達成の理由', task_causes_path(task_id: t), class: "btn btn-sm btn-outline-primary" %>
+              </td>
+              <td>
+                <%= link_to '編集する', edit_task_path(t), class: "btn btn-sm btn-outline-dark" %>
+              </td>
+              <td>
+                <%= link_to '削除する', t, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-outline-danger" %>
+              </td>
+              <td>
+                <% if t.user_id == current_user.id %>
+                  <% if current_user.favorites.find_by(task_id: t.id).present? %>
+                    <%= link_to 'お気に入り解除する', favorite_path(current_user.favorites.find_by(task_id: t.id).id), method: :delete, class: "btn btn-sm btn-outline-danger" %>
+                  <% else %>
+                    <%= link_to 'お気に入りする', favorites_path(task_id: t.id), method: :post, class: "btn btn-sm btn-outline-success" %>
+                  <% end %>
+                <% end %>
+              </td>
+            <% end %>  
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+    <%= link_to '新しいタスクを登録する', new_task_path, class: 'btn btn-primary' %>
+  </div>
+</div>
