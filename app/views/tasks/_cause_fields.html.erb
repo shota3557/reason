@@ -1,23 +1,30 @@
 <div class="nested-fields">
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>なんで？</th>
-      <th>画像</th>
-      <th>動画</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td><%= f.text_area :content, placeholder: "未達成の理由を入力してください", class: "form-control-sm" %></td>
-      <td><%= f.file_field :picture, class: "form-control-file-sm" %></td>
-      <td><%= f.file_field :movie, :accept => 'movie/*', class: "form-control-file-sm" %></td>
-      <td><%= link_to_remove_association "削除する", f , class: "btn btn-sm btn-outline-danger"%></td>
-    </tr>
-  </tbody>
-</table>
-
-<div class="links">
-  <%= link_to_add_association '解決策を思いついた', f, :solutions, class: "btn btn-sm btn-outline-danger" %>  
-</div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>なんで？</th>
+        <th>画像</th>
+        <th>動画</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <%= f.text_area :content, placeholder: "未達成の理由を入力してください", class: "form-control-sm" %>
+        </td>
+        <td>
+          <%= f.file_field :picture, class: "form-control-file-sm" %>
+        </td>
+        <td>
+          <%= f.file_field :movie, :accept => 'movie/*', class: "form-control-file-sm" %>
+        </td>
+        <td>
+          <%= link_to_remove_association "削除する", f , class: "btn btn-sm btn-outline-danger"%>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="links">
+    <%= link_to_add_association '解決策を思いついた', f, :solutions, class: "btn btn-sm btn-outline-danger" %>  
+  </div>
+</div>  
