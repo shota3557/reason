@@ -1,36 +1,44 @@
 <div class="texts-wrapper">
-<div class="contents-title text-center">
-
-<h1>タスク編集画面</h1>
-
-<%= form_with(model: @task, local: true) do |form| %>
-  <% if @task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@task.errors.count, "") %>件のエラーがあります</h2>
-      <ul>
-        <% @task.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+  <div class="contents-title text-center">
+    <h1>タスク編集画面</h1>
+    <%= form_with(model: @task, local: true) do |form| %>
+      <% if @task.errors.any? %>
+        <% @task.errors.full_messages.each do |errmsg| %>
+          <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">close</span>
+            </button>
+            <%= errmsg %>
+          </div>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>達成した</th>
-        <th>達成したいこと</th>
-        <th>イメージ画像</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= form.check_box :done, {}, "true", "false" %></td>
-        <td><%= form.text_field :name, placeholder: "達成したいことを入力してください", class: "form-control-sm" %></td>
-        <td><%= form.file_field :picture, class: "form-control-file-sm" %></td>
-        <td><%= form.submit "変更する", class: "btn btn-primary" %></td>
-      </tr>
-    </tbody>
-  </table>
-<% end %>
-<%= link_to "タスク一覧に戻る", tasks_path %>
+      <% end %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>達成した</th>
+            <th>達成したいこと</th>
+            <th>イメージ画像</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <%= form.check_box :done, {}, "true", "false" %>
+            </td>
+            <td>
+              <%= form.text_field :name, placeholder: "達成したいことを入力してください", class: "form-control-sm" %>
+            </td>
+            <td>
+              <%= form.file_field :picture, class: "form-control-file-sm" %>
+            </td>
+            <td>
+              <%= form.submit "変更する", class: "btn btn-primary" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+  <%= link_to "タスク一覧に戻る", tasks_path %>
+  </div>
+</div>
