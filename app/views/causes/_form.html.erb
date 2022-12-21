@@ -3,22 +3,22 @@
 
 <%= form_with(model: [@task, @cause], url: choose_new_or_edit, local: true) do |form| %>
   <% if @cause.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@cause.errors.count, "") %>件のエラーがあります</h2>
-
-      <ul>
-        <% @cause.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+    <% @cause.errors.full_messages.each do |errmsg| %>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">close</span>
+        </button>
+        <%= errmsg %>
+      </div>
+    <% end %>
   <% end %>
 
   <table class="table table-hover">
     <thead>
       <tr>
         <th>解決したか？</th>
-        <th>できない理由</th>
+        <th>できない原因</th>
         <th>画像</th>
         <th>動画</th>
       </tr>
@@ -27,7 +27,7 @@
     <tbody>
       <tr>
       <td><%= form.check_box :done, {}, "true", "false" %></td>
-      <td><%= form.text_field :content, placeholder: "できない理由を入力してください", class: "form-control-sm" %></td>
+      <td><%= form.text_field :content, placeholder: "できない原因を入力してください", class: "form-control-sm" %></td>
       <td><%= form.file_field :picture, class: "form-control-file-sm" %></td>
       <td><%= form.file_field :movie, :accept => 'movie/*', class: "form-control-file-sm" %></td>
       <%= form.hidden_field :task_id, :value => @cause.task_id %>
