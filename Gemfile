@@ -47,7 +47,6 @@ gem 'mini_magick'
 gem 'rails_admin'
 gem 'cancancan'
 gem "cocoon"
-gem 'cancancan'
 gem 'rails-i18n'
 gem 'fog-aws'
 gem 'dotenv-rails'
