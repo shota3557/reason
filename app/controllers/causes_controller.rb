@@ -3,7 +3,7 @@ class CausesController < ApplicationController
   before_action :cause_correct_user, only: [:edit, :update, :destroy, :show, :create]
 
   def index
-    @first_cause = Cause.where(task_id: params[:task_id]).first
+    @first_cause = Cause.bring(params[:task_id]).first    
     @task = Task.find(params[:task_id])
     @cause = @task.causes.build
   end
@@ -11,7 +11,7 @@ class CausesController < ApplicationController
   def show
     @task = Task.find(params[:task_id])
     @cause = @task.causes.build
-    @causes = Cause.where(task_id: params[:task_id])
+    @causes = Cause.bring(params[:task_id])
   end
 
   def new

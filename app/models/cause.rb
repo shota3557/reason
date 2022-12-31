@@ -5,4 +5,5 @@ class Cause < ApplicationRecord
   accepts_nested_attributes_for :solutions, allow_destroy: true
   belongs_to :task
   validates :content, presence: true
+  scope :bring, -> task_id { where(task_id: task_id)}
 end
