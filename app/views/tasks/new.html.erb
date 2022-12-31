@@ -53,7 +53,7 @@
           </tbody>
         </table>
       <% end %>
-      <div class="links">
+      <div class="links" id="reason">
         <%= link_to_add_association 'できない理由を追加する', form, :causes, class: "btn btn-sm btn-outline-primary" %>
       </div>
       <div class="actions">
@@ -63,3 +63,10 @@
     <%= link_to "タスク一覧に戻る", tasks_path %>
   </div>
 </div>    
+
+<script>
+function set_display() {
+  document.getElementById('solution').style.display = 'none'
+  document.getElementById('reason').style.display = 'none'  
+}  
+</script>

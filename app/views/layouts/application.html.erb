@@ -20,31 +20,31 @@
         <ul class="navbar-nav">
           <% if user_signed_in? %>
             <li class="nav-item active">
-              <a class="nav-item text-dark"><%= link_to 'マイページ', user_path(current_user.id), class: 'btn btn-outline-info rounded-pill' %></a>
+              <%= link_to 'マイページ', user_path(current_user.id), class: 'btn btn-outline-info rounded-pill' %>
             </li>  
             <li class="nav-item active">
-              <a class="nav-item text-dark"><%= link_to 'お気に入り一覧', favorites_path, class: 'btn btn-outline-info rounded-pill' %></a>
+              <%= link_to 'お気に入り一覧', favorites_path, class: 'btn btn-outline-info rounded-pill' %>
             </li>
             <li class="nav-item active">
               <% if current_user.try(:admin?) %>
-                <a class="nav-item text-dark"><%= link_to '管理者画面へ', users_path, class: 'btn btn-outline-info rounded-pill' %></a>
+                <%= link_to '管理者画面へ', users_path, class: 'btn btn-outline-info rounded-pill' %>
               <% end %>
             </li>
               <li class="nav-item active">
-              <a class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger rounded-pill' %></a>
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger rounded-pill' %>
               </li>
           <% else %>
             <li class="nav-item active">
-              <a class="nav-item text-dark"><%= link_to 'サインアップ', new_user_registration_path, class: 'btn btn-outline-info rounded-pill' %></a>
+              <%= link_to 'サインアップ', new_user_registration_path, class: 'btn btn-outline-info rounded-pill' %>
             </li>  
             <li class="nav-item active">
-              <a class="nav-item text-dark"><%= link_to 'ログイン', new_user_session_path, class: 'btn btn-outline-info rounded-pill ' %></a>
+              <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-outline-info rounded-pill ' %>
             </li>  
             <li class="nav-item active">
-              <a class="nav-item text-dark"><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'btn btn-outline-info rounded-pill' %></a>
+              <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'btn btn-outline-info rounded-pill' %>
             </li>  
             <li class="nav-item active">
-              <a class="nav-item text-dark"><%= link_to "ゲスト管理者ログイン", users_admin_guest_sign_in_path, method: :post, class: 'btn btn-outline-info rounded-pill' %></a>
+              <%= link_to "ゲスト管理者ログイン", users_admin_guest_sign_in_path, method: :post, class: 'btn btn-outline-info rounded-pill' %>
             </li>
           <% end %>
         </ul>
