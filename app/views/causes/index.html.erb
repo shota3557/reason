@@ -6,8 +6,8 @@
         <thead>
           <tr>
             <th>進まない原因</th>
-            <th>画像</th>
-            <th>動画</th>
+            <th style="width: 15%">画像</th>
+            <th style="width: 15%">動画</th>
             <th colspan="3"></th>
           </tr>
         </thead>
@@ -15,10 +15,14 @@
         <tbody>
           <tr>
             <td><%= @first_cause.content %></td>
-            <td><%= image_tag @first_cause&.picture.url, size: "500x500" unless @first_cause&.picture.url == nil %></td>
             <td>
-              <%= link_to @first_cause.movie_url.to_s do %>
-                <%= video_tag(@first_cause.movie.to_s, autoplay: true, muted: true, loop: true) unless @first_cause&.movie&.url == nil %>
+              <%= link_to @first_cause&.picture.url, "data-lightbox" => @first_cause&.picture.url do %>
+                <%= image_tag @first_cause&.picture.url, width: '50%', height: '50%' if @first_cause&.picture.url %>
+              <% end %>  
+            </td>
+            <td>
+              <%= link_to @first_cause.movie_url.to_s, "data-lightbox" => @first_cause.movie_url.to_s do %>
+                <%= video_tag(@first_cause.movie.to_s, width: '60%', height: '60%', autoplay: true, muted: true, loop: true) unless @first_cause&.movie&.url == nil %>
               <% end %> 
             </td>
             <td><%= link_to '詳細を見る', task_cause_path(@task, @first_cause), class: 'btn btn-outline-success' %></td>
