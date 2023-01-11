@@ -54,10 +54,10 @@
         </table>
       <% end %>
       <div class="links" id="reason">
-        <%= link_to_add_association 'できない理由を追加する', form, :causes, class: "btn btn-sm btn-outline-primary" %>
+        <%= link_to_add_association 'できない理由を追加する', form, :causes, class: "btn btn-sm btn-outline-primary mb-2" %>
       </div>
       <div class="actions">
-        <%= form.submit "登録する", class: "btn btn-danger" %>
+        <%= form.submit "登録する", class: "btn btn-danger mb-2" %>
       </div>
     <% end %>
     <%= link_to "タスク一覧に戻る", tasks_path %>
